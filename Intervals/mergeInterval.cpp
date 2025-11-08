@@ -9,15 +9,17 @@ vector<vector<int>> merge(vector<vector<int>>& intervals) {
     
     vector<vector<int>> merged;
     
-    for (auto interval : intervals) {
-        // If merged is empty or no overlap, push current interval
-        if (merged.empty() || merged.back()[1] < interval[0]) {
-            merged.push_back(interval);
-        } else {
-            // Overlapping intervals → merge them
-            merged.back()[1] = max(merged.back()[1], interval[1]);
+    for(int i = 0;i<len;++i)
+        {
+            if(res.empty() || res.back()[1] < intervals[i][0])
+            {
+                res.push_back({intervals[i]});
+            }
+            else{
+                res.back()[1] = max(res.back()[1], intervals[i][1]);
+            }
         }
-    }
+        
     return merged;
 }
 
